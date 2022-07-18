@@ -21,7 +21,7 @@ namespace BTask
         BackgroundTaskDeferral taskDeferral;
         DevicePortalConnection devicePortalConnection;
 
-        
+
 
         BackgroundTaskCancellationReason _cancelReason = BackgroundTaskCancellationReason.Abort;
 
@@ -63,13 +63,6 @@ namespace BTask
 
             if (req.RequestUri.AbsolutePath.EndsWith("/echo"))
             {
-                //Uri redirectUri = new Uri("https://192.168.50.86/api/holographic/stream/live.mp4");
-                //HttpRequestMessage forwardRequest = Clone(req, redirectUri);
-
-                //HttpClient client = new HttpClient();
-                //Task<HttpResponseMessage> response = client.SendAsync(forwardRequest);
-                //Task.WaitAll(new Task[] { response });
-                //HttpResponseMessage result = response.Result;
 
                 // construct an html response message
                 string con = "Vektor";
@@ -78,40 +71,7 @@ namespace BTask
                 res.Content.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("text/html");
                 res.StatusCode = HttpStatusCode.Ok;
             }
-            
-            /*if (req.RequestUri.AbsolutePath.EndsWith("/video"))
-            {
-                
-                string con = "video";
-                res.Content = new HttpStringContent(con);
-                //res.Content.Headers.Add("Allow", "GET");
-                res.Content.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("text/html");
-                res.StatusCode = HttpStatusCode.Ok;
-            }*/
 
         }
-
-        /*public static HttpRequestMessage Clone(this HttpRequestMessage req, Uri newUri)
-        {
-            HttpRequestMessage clone = new HttpRequestMessage(req.Method, newUri);
-
-            if (req.Method != HttpMethod.Get)
-            {
-                clone.Content = req.Content;
-            }
-            clone.Version = req.Version;
-
-            foreach (KeyValuePair<string, object> prop in req.Properties)
-            {
-                clone.Properties.Add(prop);
-            }
-
-            foreach (KeyValuePair<string, IEnumerable<string>> header in req.Headers)
-            {
-                clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
-            }
-
-            return clone;
-        }*/
     }
 }
